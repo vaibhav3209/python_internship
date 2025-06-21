@@ -47,19 +47,17 @@ while True:
        print("enter number  order items ")               #do by walris operator
        item=int(input())
 
-
        for x in range(item):
          print(f"enter name of item {x}  and amount of item {x} ")
          name = input()
          amount=int(input())
          list.extend([name,amount])
 
-
     elif ch == 2:
-# pass
+        # pass
         print(" bill summary:", list)
     elif ch == 3:
-       # pass
+        # pass
         item_amt = list[1::2]               #ITEM AMOUNT KI ALAG LIST
         # print(item_amt)                   THIS TAKES AMOUNT FOR RESPECTIVE ITEMS
         # print(type(item_amt))
