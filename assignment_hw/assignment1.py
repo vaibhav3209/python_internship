@@ -15,19 +15,24 @@
 #
 # str1 = input("enter string 1:")
 # str2 = input("enter string 2:")
-#
-#
-# z= str1+" "+str2+"\n"
-# print(z)
-# seq = ("my name is:")   #har letter k baad string paste karra
-# seq = ("my name is:"," ")
-#
-# print(z.join(seq))
-# print(z.splitlines())
-#
-# print(z.title())
-# print(z.capitalize())
-# print(z.swapcase())
+# z= str1+" "+str2
+
+# print("lowercase: ",z.lower())
+# print("uppercase: ",z.upper())
+# print("title: ",z.title())
+# print("swapcase: ",z.swapcase())
+# print("casefold: ",z.casefold())
+# print("capital: ",z.capitalize())
+# print("a:",z.count("a"),"v:",z.count("v"))
+# print(z.endswith("av"))
+# print(z.find("av"))
+# print("alphanum: ",z.isalnum())
+# print("digit: ",z.isdigit())
+# print("numeric: ",z.isnumeric())
+# print("isspace: ",z.isspace())
+# print(z.replace("av","xx"))
+
+
 # ..........................................................
 
 
