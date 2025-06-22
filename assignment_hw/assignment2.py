@@ -31,44 +31,80 @@
 #..................................
 
 
-#QUESTION 4 ................
-list=[]                         #ITEMS TO BE ADDED
-sum=0                           #TOTAL TO BE CALCULATED
-while True:
-    print(''' 
-1. Create Bill
-2. Display Item Price and total bill amount
-3. Display Total
-4. Exit
-''')
-    ch= int(input("Enter your choice "))
-    if ch == 1:
-       # pass
-       print("enter number  order items ")               #do by walris operator
-       item=int(input())
+# #QUESTION 4 ................
+# list=[]                         #ITEMS TO BE ADDED
+# sum=0                           #TOTAL TO BE CALCULATED
+# while True:
+#     print('''
+# 1. Create Bill
+# 2. Display Item Price and total bill amount
+# 3. Display Total
+# 4. Exit
+# ''')
+#     ch= int(input("Enter your choice "))
+#     if ch == 1:
+#        # pass
+#        print("enter number  order items ")               #do by walris operator
+#        item=int(input())
+#
+#        for x in range(item):
+#          print(f"enter name of item {x}  and amount of item {x} ")
+#          name = input()
+#          amount=int(input())
+#          list.extend([name,amount])
+#
+#     elif ch == 2:
+#         # pass
+#         print(" bill summary:", list)
+#     elif ch == 3:
+#         # pass
+#         item_amt = list[1::2]               #ITEM AMOUNT KI ALAG LIST
+#         # print(item_amt)                   THIS TAKES AMOUNT FOR RESPECTIVE ITEMS
+#         # print(type(item_amt))
+#                                                  #METHOD 2 direct for loop ki range(0,n,2) isse 2 skip karega?????????
+#         for x in item_amt:
+#             sum+=x
+#         print("Total Bill amount is: ",sum)
+#
+#     elif ch == 4:
+#        break
+#     else:
+#         print("invailde inputia")
 
-       for x in range(item):
-         print(f"enter name of item {x}  and amount of item {x} ")
-         name = input()
-         amount=int(input())
-         list.extend([name,amount])
+#.................................................
+#              QUESTION5 LARGEST ,2ND LARGEST ,SECOND SMALLEST IN A LIST
 
-    elif ch == 2:
-        # pass
-        print(" bill summary:", list)
-    elif ch == 3:
-        # pass
-        item_amt = list[1::2]               #ITEM AMOUNT KI ALAG LIST
-        # print(item_amt)                   THIS TAKES AMOUNT FOR RESPECTIVE ITEMS
-        # print(type(item_amt))
-        for x in item_amt:
-            sum+=x
-        print("Total Bill amount is: ",sum)
+x = (input("enter elemetns sep by spaces:"))
+list = x.split()
+print("List is: ",list)
 
-    elif ch == 4:
-       break
-    else:
-        print("invailde inputia")
+#largest
+# max = list[0]
+# for i in list:
+#     if i>max:
+#         max=i
+#
+# print("Maximum elemtn is: ",max)
+#
+# #second largest
+# max2=list[0]
+# for i in list:
+#     if (i>max2 and i<max):
+#         max2=i
+# print("second maximum elemetn: ",max2)
+
+#second smallest
+mini=list[0]
+# mini2=list[0]
+
+for i in list[1:]:
+    if i<mini:
+        mini2=mini
+        mini=i
+    elif  i != mini and (i<mini2 or mini2==mini) :
+        mini2 = i
+print("second smallest is: ",mini2 )
+print("smallest is: ",mini )
 
 
 
