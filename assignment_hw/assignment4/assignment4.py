@@ -112,6 +112,10 @@ for x in table1:
     print(x)
 
 #delteting
+conn.execute("DELETE FROM teachers WHERE id = 2")
+table2 = conn.execute('''SELECT * FROM teachers''')
+for x in table2:
+    print(x)
 conn.close()
 
 
