@@ -41,3 +41,84 @@ import csv
 # weather(city,my_api)
 
 #..................................................................
+#QUESTION 3:
+import sqlite3
+conn = sqlite3.connect("asssignment4.db")              #database
+
+# def create_table(name):
+# conn.execute('''                          -- ek table to create hoti but not 3 simultaneously
+# CREATE TABLE students(
+# rollno INTEGER PRIMARY KEY,
+# sname VARCHAR(30),
+# age INTEGER
+# )
+# ''')
+#
+# conn.executescript('''                    -- execute karo multiple sql satetements separated by ;
+# CREATE TABLE teachers(
+# id INTEGER PRIMARY KEY,
+# tname VARCHAR(30),
+# age INTEGER,
+# sub VARCHAR(30)
+# );
+# CREATE TABLE DEPARTMENT(
+# sub VARCHAR(30) PRIMARY KEY,
+# dept VARCHAR(30)
+# )''')
+#...................................................
+
+
+
+#insert data
+# conn.executescript('''
+# INSERT INTO students
+#  values
+# (101,"vaib",20),
+# (102,"bl",21),
+# (103,"chal",22);
+#
+# INSERT INTO teachers
+#  values
+# (1,"bhanu",20,"hindi"),
+# (2,"gupta",21,"eng"),
+# (3,"sharma",22,"maths");
+#
+# INSERT INTO DEPARTMENT
+#  values
+# ("eng","cs"),
+# ("hindi","it"),
+# ("maths","meta");
+# ''')
+# conn.commit()
+
+#..........................................
+#printing and updating
+table1 = conn.execute('''SELECT * FROM students''')               #can we print three tables simultsneously do by hit and trial
+table2 = conn.execute('''SELECT * FROM teachers''')
+table3 = conn.execute('''SELECT * FROM DEPARTMENT''')
+                                                                        #iska koi combine sattement hai kya
+                                                                        #iske uptput mein column names nhi aate kya
+for x in table1:
+    print(x)
+for x in table2:
+    print(x)
+for x in table3:
+    print(x)
+
+#updateing values
+conn.execute("UPDATE students SET sname = \"mehul\" WHERE rollno = 102 ")
+table1 = conn.execute('''SELECT * FROM students''')
+for x in table1:
+    print(x)
+
+#delteting
+conn.close()
+
+
+# while True:
+#     x = int(input("enter your choice: "))
+#     if x == 1:
+#         name = input("enter name for table: ")
+#         create_table(name)
+#     if x == 2:
+#         break
