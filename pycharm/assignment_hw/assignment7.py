@@ -27,16 +27,16 @@
 #question 2.)
 import pandas as pd
 # import datetime
-fixed = "2038-01-19 03:14:07"
-# year  = fixed.dt.year
-time = pd.to_datetime(fixed)
-print(time)
-
-print("\nyeaar:",time.year)
-print("month :",time.month,"\tmonth name:",time.month_name())
-print("date:",time.day,"\tday:",time.day_name())
-print("hour:",time.hour)
-print(time.isocalendar())
+# fixed = "2038-01-19 03:14:07"
+# # year  = fixed.dt.year
+# time = pd.to_datetime(fixed)
+# print(time)
+#
+# print("\nyeaar:",time.year)
+# print("month :",time.month,"\tmonth name:",time.month_name())
+# print("date:",time.day,"\tday:",time.day_name())
+# print("hour:",time.hour)
+# print(time.isocalendar())
 
 # ........................................................................
 #QUESTION3
@@ -51,10 +51,17 @@ print(data.info(),data.describe(),data.shape,sep="\n")
 print("\n1.)Products by popularity:(pre-order<-out of stock<-limited stock<-in stock) \n")
 print(data.sort_values(by="Availability").to_string())
 
+least = data.loc[(data["Availability"]=="backorder")]
+print("\nLEAST SELLING PRODUCT \n",least["Name"])
+
+                                                                            # print(", ".join(prod))
+                                                                            #to pretty your list
+most = data.loc[(data["Availability"]=="pre_order")]
+print("\nbest SELLING PRODUCT \n",most["Name"])
 
 
+waste = data.loc[(data["Availability"]=="discontinued")]
+print("\nwaste money\n",waste.groupby("Availability")["Price"].sum())
 
+# print((pd.concat([least,most],axis=1)).to_string())                #this not look good
 
-# high_p =(data["Availability"]=="pre_order")
-# print((data[data["Name"]]==high_p).head())
-# print("\n2)Least popular products(backorder<-discontinued)\n")
