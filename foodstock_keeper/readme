@@ -1,0 +1,19 @@
+manager ki alag file  mein uska code and main mein import
+initial stock ka alag code
+customer ka alag code
+and main driver code
+.................................................
+
+
+items k tuples ko tabular format mein laana
+colour aadd to text
+
+
+units sold plus nhi ho rhe poore month k add hone chahiye
+reset database ka bhi code karo
+low stock print in red ,,, have stock print in green
+
+
+questions
+agar unit price change karni ho to.......dataframe ki values change kar denge by some command
+ to add new product .........concatenate karenge naye dataframe ko????
