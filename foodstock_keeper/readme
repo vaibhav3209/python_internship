@@ -1,19 +1,29 @@
-manager ki alag file  mein uska code and main mein import
-initial stock ka alag code
-customer ka alag code
-and main driver code
+READ THIS BEFORE:
+1.)there are 3 files
+        -->>intial_stock_code   for resetting or forming tables at start of month,add new item,change unit price etc
+        -->>main                which is the shopping code for xustomer
+        -->>manager_code        for manager end to check stock or reset
+
+2.) three tables  (see respective columns)
+        -->>sales
+        -->>orders
+        -->>stock
+
+3.)  main.py is a function heavy file (and might be confusing)
+
+4.)LIBRARIES USED:
+        -->>tabulate
+        -->>pandas              just for initial stock dataframe(idk why)
+        -->>sqlite3             all the work in one database only
+        -->>numpy               just once to convert np.float type of data to float to work in conn.execute()
+
+5.)   this project took me overall  15HRS with appx 30-40% help of CHATGPT
 .................................................
 
+FUTUTRE CAN DO'S::
+A.)low stock print in red ,,, have stock print in green
+B.)Can change units of fruits to kgs and respective units for others likewise
+c.)add new items by changing initial_stock_code file
+d.)apply data analysis tecchniques and write changes in MANAGER_CODE file
+.................................................
 
-items k tuples ko tabular format mein laana
-colour aadd to text
-
-
-units sold plus nhi ho rhe poore month k add hone chahiye
-reset database ka bhi code karo
-low stock print in red ,,, have stock print in green
-
-
-questions
-agar unit price change karni ho to.......dataframe ki values change kar denge by some command
- to add new product .........concatenate karenge naye dataframe ko????
