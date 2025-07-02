@@ -64,37 +64,3 @@
 #
 #
 #
-#
-#
-# #
-# # list=[]                         #ITEMS TO BE ADDED
-# # sum=0                           #TOTAL TO BE CALCULATED
-# #
-# #
-# #                  #category ka datframe aa jaye
-# #        print("enter number  order items ")
-# #        item=int(input())
-# #
-# #        for x in range(item):
-# #          print(f"enter name of item {x}  and amount of item {x} ")
-# #          name = input()
-# #          amount=int(input())
-# #          list.extend([name,amount])
-# #
-# #     elif ch == 2:
-# #         # pass
-# #         print(" bill summary:", list)
-# #     elif ch == 3:
-# #         # pass
-# #         item_amt = list[1::2]               #ITEM AMOUNT KI ALAG LIST
-# #         # print(item_amt)                   THIS TAKES AMOUNT FOR RESPECTIVE ITEMS
-# #         # print(type(item_amt))
-# #                                                  #METHOD 2 direct for loop ki range(0,n,2) isse 2 skip karega?????????
-# #         for x in item_amt:
-# #             sum+=x
-# #         print("Total Bill amount is: ",sum)
-# #
-# #     elif ch == 4:
-# #        break
-# #     else:
-# #         print("invailde inputia")

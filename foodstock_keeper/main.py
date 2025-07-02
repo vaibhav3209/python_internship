@@ -1,5 +1,8 @@
 import sqlite3
 import pandas as pd
+import tabulate
+import tabulate as tb
+
 
 
 def manager_update(item,order_qty):
@@ -21,26 +24,7 @@ def manager_update(item,order_qty):
         #ya phir dbase se table lao
 
 
-def shopping_menu(bill_amt):
-    print("available categories:")
-    shopping = sqlite3.connect("foodstock.db")
-    meta = shopping.execute('''SELECT id,item_name,category,unit_price FROM stock''')
-    print("(id, 'item_name', 'category', 'unit_price')")
-    # print(type(meta))
-    # ye tuple ki form mein ayega so print first element of tuple
-    for row in meta:  # see (if later) by print(row)
-        print(row)  # ye AVIALABLE CATEGORIES PRINT
-    shopping.close()
 
-    # ab order select from same category twixe or mainmenu pe waapas jaana
-    shop = input("what name and HOW MUCH in spaces??")
-    str = shop.split(" ")
-    # print(len(str))   YE PASS IN BELOW FUNCTION FOR ITERATION LIMIT PROBLEM IN MAKE_BILL
-
-    z = make_bill(str, len(str), bill_amt)
-
-    # qty2 = float(qty)
-    # print(str,type(str))
 
 
 def make_bill(lst,size,bill_amt=0) :
@@ -69,6 +53,41 @@ def make_bill(lst,size,bill_amt=0) :
     return  bill_amt
     # bill_amt = price * qty2
 
+def shopping_menu(bill_amt):
+    print("available categories:")
+    shopping = sqlite3.connect("foodstock.db")
+    meta = shopping.execute('''SELECT id,item_name,category,unit_price,
+    (CASE 
+    WHEN qty_final = "NULL" then qty_original
+    ELSE qty_final
+    END) 
+    FROM stock''')
+
+                                                                #tabulate se direct print ho jayega varna har row alag se print karani padegi
+    print(tb.tabulate(meta,headers=['id', 'item_name', 'category', 'unit_price',"stock_available"],tablefmt='grid'))
+
+# {
+    # print("(id, 'item_name', 'category', 'unit_price')")
+    # print(type(meta))
+                                                          # ye tuple ki form mein ayega so print first element of tuple
+    # for row in meta:                                      # see (if later) by print(row)
+    #     # print(row)                                       # ye AVIALABLE CATEGORIES PRINT
+
+# }
+
+    shopping.close()
+
+                                                                # ab order select from same category twixe or mainmenu pe waapas jaana
+    shop = input("what name and HOW MUCH in spaces??")
+    str = shop.split(" ")
+    # print(len(str))                                               YE PASS IN BELOW FUNCTION FOR ITERATION LIMIT PROBLEM IN MAKE_BILL
+
+    z = make_bill(str, len(str), bill_amt)
+    return  z
+
+    # qty2 = float(qty)
+    # print(str,type(str))
+
 
 def main():
 
@@ -89,6 +108,7 @@ def main():
                     print("inital bill: ",bill_amt)
 
 
+
                 if count>=1:                                            #if customer enters menu more than one
                     # new_bill = make_bill()                             #ye nhi kar sakte as baaki arg nhi hai
                     print("Updated bill:",z)
@@ -96,9 +116,10 @@ def main():
                                                                 #pehle nhi honrha tha
                 count += 1
 
-                shopping_menu(bill_amt)
+                z=shopping_menu(bill_amt)
 
             case 2:
+
                 break
 
             case 3 :
