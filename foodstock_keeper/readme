@@ -18,6 +18,10 @@ READ THIS BEFORE:
         -->>numpy               just once to convert np.float type of data to float to work in conn.execute()
 
 5.)   this project took me overall  15HRS with appx 30-40% help of CHATGPT
+
+6.) also CUSTOMER.PY  is the bruteforce way of when i thought of this project.It uses series and dataframes
+in pandas library....
+if you dont use it programs will run fine.
 .................................................
 
 FUTUTRE CAN DO'S::
