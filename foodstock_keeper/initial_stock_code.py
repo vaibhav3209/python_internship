@@ -55,13 +55,13 @@ def sales_table_initial():
     c= make_sales.cursor()
 
     c.execute('''CREATE TABLE sales(
-    cid INT PRIMARY KEY, 
+    cid INTEGER PRIMARY KEY AUTOINCREMENT,
     cname TEXT,
-    oid INT,
-    order_value FLOAT, 
+    order_value FLOAT,
     order_date DATE
     )
     ''')
+
     make_sales.close()
 
 
@@ -69,19 +69,25 @@ def orders_table_initial():
         make_orders = sqlite3.connect("foodstock.db")
         c = make_orders.cursor()
 
-        c.execute('''CREATE TABLE orders(
-        oid INT PRIMARY KEY, 
+        c.executescript('''
+        -- drop table  if exists orders;
+        CREATE TABLE orders (
+        cid INTEGER ,
+        cname TEXT,
+        oid INTEGER  AUTO_INCREMENT,
         item_name TEXT,
-        units_ordered INT, 
-        category TEXT
-        )
+        units_ordered INT,
+        FOREIGN KEY (cid) REFERENCES sales(cid)
+        
+        -- category TEXT --remove this iski no need              
+        );
         ''')
         make_orders.close()
 
 def main ():
 
     # stock_table_inital()
-    # sales_table_initial()
+    sales_table_initial()
     # orders_table_initial()
 
 
