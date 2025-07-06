@@ -5,9 +5,9 @@ READ THIS BEFORE:
         -->>manager_code        for manager end to check stock or reset
 
 2.) three tables  (see respective columns)
-        -->>sales
-        -->>orders
-        -->>stock
+        -->>customers(P.K. == cid)
+        -->>orders(P.K. ==oid  )   ,,, FOREIGN KEY (cid,order_date) REFERENCES customers(cid,order_date)
+        -->>stock(P.K. == item_name)
 
 3.)  main.py is a function heavy file (and might be confusing)
 

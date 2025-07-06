@@ -5,7 +5,7 @@ import numpy as np                                          #to convert np.float
 
 
                                                     # THIS IS AONE TIMEFUNCTION
-def stock_table_inital():
+def stock_table_initial():
     initial_stock_df = pd.DataFrame({"id": range(1, 8),
                                      'item_name': ['Apple', 'Banana', 'Dairymilk', 'Kitkat', 'Oreo', 'Almond',
                                                    'Cashew'],
@@ -26,11 +26,10 @@ def stock_table_inital():
     category TEXT,
     unit_price FLOAT,
     qty_original INT,
-    qty_final INT DEFAULT "NULL",
-    sold_units INT DEFAULT "NULL");
+    qty_final INT DEFAULT "NULL");
 
     ''')
-    food_stock.close()
+    # food_stock.close()
 
                                                             # # #now put it into initial_stock table
 
@@ -50,16 +49,17 @@ def stock_table_inital():
     food_stock.close()
 
 
-def sales_table_initial():
+def customers_table_initial():
     make_sales = sqlite3.connect("foodstock.db")
     c= make_sales.cursor()
 
-    c.execute('''CREATE TABLE sales(
+    c.executescript(''' -- drop table if exists customers;
+    CREATE TABLE  customers(
     cid INTEGER PRIMARY KEY AUTOINCREMENT,
     cname TEXT,
-    order_value FLOAT,
     order_date DATE
-    )
+    
+    );
     ''')
 
     make_sales.close()
@@ -72,22 +72,23 @@ def orders_table_initial():
         c.executescript('''
         -- drop table  if exists orders;
         CREATE TABLE orders (
+        oid INTEGER ,     
         cid INTEGER ,
-        cname TEXT,
-        oid INTEGER  AUTO_INCREMENT,
+        
         item_name TEXT,
         units_ordered INT,
-        FOREIGN KEY (cid) REFERENCES sales(cid)
-        
-        -- category TEXT --remove this iski no need              
+        order_date DATE,
+        PRIMARY KEY (oid),
+        FOREIGN KEY (cid,order_date) REFERENCES customers(cid,order_date)
+                   
         );
         ''')
         make_orders.close()
 
 def main ():
 
-    # stock_table_inital()
-    sales_table_initial()
+    # stock_table_initial()
+    customers_table_initial()
     # orders_table_initial()
 
 
