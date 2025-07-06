@@ -88,7 +88,7 @@ def orders_table_initial():
 def main ():
 
     # stock_table_initial()
-    customers_table_initial()
+    # customers_table_initial()
     # orders_table_initial()
 
 

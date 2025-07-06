@@ -71,6 +71,20 @@ def main():
 
                 case 3:
                     ...
+                    #isko graph mein banana  x,y,points leke straight line hai ya nhi matlab sales drop hori
+                    #isi se total sales ,,,total sales by category ,,,most sold products
+                    #MATPLOTLIB SE SALES GRAPH  bhi bna sakte
+
+                    # print("total sales by each category per day:")
+                    # data = sqlite3.connect("foodstock.db")
+                    # c = data.cursor()
+                    # c.execute('''SELECT order_date,category,sum(units_ordered * unit_price) as sales,
+                    #             count(item_name) as units_sold
+                    #                                   FROM orders o
+                    #                                   JOIN stock s USING (item_name)
+                    #                                   WHERE order_date IS NOT NULL
+                    #                                   GROUP BY order_date,category''')
+                    # c.close()
 
                 case 4:
                     break
