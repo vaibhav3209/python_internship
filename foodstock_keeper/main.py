@@ -2,7 +2,7 @@ import sqlite3
 import pandas as pd
 import tabulate as tb
 import datetime
-
+##
 
 
 def manager_update(item,order_qty):
