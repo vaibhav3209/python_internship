@@ -89,7 +89,7 @@ def main ():
 
     # stock_table_initial()
     # customers_table_initial()
-    # orders_table_initial()
+    # orders_table_initial()##
 
 
 if __name__ == '__main__':

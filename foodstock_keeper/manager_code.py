@@ -49,7 +49,7 @@ def check_stock_func():
 
 
 
-def main():
+def main():##
 
     password = input("WELCOME SAA...enter your password: ")
     if password == 'iloveindia':
