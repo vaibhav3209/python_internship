@@ -1,0 +1,43 @@
+
+#upload volume to databricks and save file in dataframe
+#NOTE TO INCLUDE HEADER, USE header = True,,,INFERSCHEMA = TRUE
+df = spark.read.csv("/Volumes/workspace/python_intern_day21/raw_data/sales_day21.csv/",header =True,inferSchema=True )
+df.display()
+
+#DISPLAy only few first rows
+# df.head(10)            #this doent give formatted output
+df.show(10,vertical=True)              #this gives in different format(*****LEGIBLE****)
+
+
+#taking only those values which have sales>1000
+df_filtered = df.filter(df['SALES']>1000)
+df_filtered.display()
+
+#append this into delta table
+#mode === append kar diya to jitni baar chalega utin rows add hogi
+
+df_transformed.write.format("delta").mode("overwrite").saveAsTable("python_intern_day21.sales")
+
+#read from delta table
+df_delta = spark.read.format("delta").table("python_intern_day21.sales")
+df_delta.display()
+
+
+history = spark.sql("DESCRIBE HISTORY python_intern_day21.sales")
+history.display()
+
+#read data from delta table with specific version
+version_number = 1
+#version_number = 2 pe data nahi ayega
+df_specific_version = spark.read.format("delta").option("versionAsOf",version_number).table("python_intern_day21.sales")
+display(df_specific_version)
+
+df_delta.printSchema()
+
+#group by country and city
+df_agg_sales = df_delta.groupBy("COUNTRY","CITY").agg(
+    sum("SALES").alias("Total_Sales"),
+    count("ORDERNUMBER").alias("Total_Orders"),
+    sum("QUANTITYORDERED").alias("Total_Quantity_ordered")
+    )
+df_agg_sales.display()
